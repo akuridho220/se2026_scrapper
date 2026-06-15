@@ -77,6 +77,7 @@ def fetch_data_desa(session, kec_id, desa, kec_name, prov_id, kab_id, period_id,
     desa_results = []
     start_point = 0
     total_count = 0
+    total_scrap_lokal = 0
 
     while True:
         payload = {
@@ -135,14 +136,14 @@ def fetch_data_desa(session, kec_id, desa, kec_name, prov_id, kab_id, period_id,
                         "Pencacah":     item.get("currentUserFullname", ""),
                         "codeIdentity": item.get("codeIdentity", ""),
                     })
-                total_scrap += len(items)
+                total_scrap_lokal += len(items)
                 # desa_results.extend(items)
 
             print(
                 f"      [DESA] {desa['name']} | "
                 f"Batch: {start_point}-{start_point + len(items) - 1 if items else start_point} | "
                 f"Ambil: {len(items)} | Total: {total_count}"
-                f" | Akumulasi: {total_scrap}"
+                f" | Akumulasi: {total_scrap+total_scrap_lokal}"
             )
 
             start_point += 100
@@ -153,12 +154,13 @@ def fetch_data_desa(session, kec_id, desa, kec_name, prov_id, kab_id, period_id,
             logging.error(f"[DESA ERROR] {desa['name']} start {start_point}: {e}")
             break
 
-    mark_done(desa["name"], "desa")
-    return desa_results, total_count, total_scrap
+    # mark_done(desa["name"], "desa")
+    return desa_results, total_count, total_scrap_lokal
 
 def fetch_data_sls(session, kec_id, desa, kec_name, sls_list, prov_id, kab_id, period_id, total_scrap):
     total_sls = len(sls_list)
     all_results = []
+    total_scrap_lokal = 0
 
     for idx_sls, sls in enumerate(sls_list, 1):
         print(f"      >> SLS ({idx_sls}/{total_sls}): {sls['name']}")
@@ -218,14 +220,14 @@ def fetch_data_sls(session, kec_id, desa, kec_name, sls_list, prov_id, kab_id, p
                             "Pencacah":     item.get("currentUserFullname", ""),
                             "codeIdentity": item.get("codeIdentity", ""),
                         })
-                    total_scrap += len(items)
+                    total_scrap_lokal += len(items)
                     # all_results.extend(items)
                 
                 print(
                     f"         [SLS] {sls['name']} | "
                     f"Batch: {start_point}-{start_point + len(items) - 1 if items else start_point} | "
                     f"Ambil: {len(items)}"
-                    f" | Akumulasi: {total_scrap}"
+                    f" | Akumulasi: {total_scrap+total_scrap_lokal}"
                 )
 
                 start_point += 100
@@ -239,8 +241,8 @@ def fetch_data_sls(session, kec_id, desa, kec_name, sls_list, prov_id, kab_id, p
                 logging.error(f"[SLS ERROR] {sls['name']}: {e}")
                 break
             
-    mark_done(sls["name"], "sls")
-    return all_results, total_scrap
+    # mark_done(sls["name"], "sls")
+    return all_results, total_scrap_lokal
 
 def mark_done(name, level="desa"):
     with open("progress.txt", "a") as f:
@@ -302,7 +304,7 @@ def fetch_data():
             # if (desa_name != ""):
             #     continue
             
-            desa_data, total_count, total_hasil_scrap_desa = fetch_data_desa(session, kec_id, desa, kec_name, prov_id, kab_id, period_id, idx_desa, total_desa, total_scrap)
+            desa_data, total_count, total_scrap_lokal_desa = fetch_data_desa(session, kec_id, desa, kec_name, prov_id, kab_id, period_id, idx_desa, total_desa, total_scrap)
             if total_count >= 1000:
                 print(f"   [!] Desa {desa['name']} kena limit → fallback SLS")
 
@@ -311,11 +313,11 @@ def fetch_data():
                     "level4Id": desa["id"]
                 })
 
-                desa_data, total_hasil_scrap_sls = fetch_data_sls(session, kec_id, desa, kec_name, sls_list, prov_id, kab_id, period_id, total_scrap)
-                total_scrap += total_hasil_scrap_sls
-
-            if total_count < 1000:
-                total_scrap += total_hasil_scrap_desa
+                desa_data, total_scrap_lokal_sls = fetch_data_sls(session, kec_id, desa, kec_name, sls_list, prov_id, kab_id, period_id, total_scrap)
+                total_scrap += total_scrap_lokal_sls
+            
+            elif total_count < 1000:
+                total_scrap += total_scrap_lokal_desa
 
             # 🔥 SAVE SEKALI PER DESA
             if desa_data:
