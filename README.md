@@ -84,8 +84,7 @@ py se_scrapper.py
   * Jika lebih dari itu, data selebihnya **tidak akan terambil**
 * Gunakan script ini dengan bijak
 
-  * Disarankan menjalankan pada **malam hari**
-  * Untuk menghindari gangguan terhadap server dan proses pendataan lapangan
+  * Disarankan menjalankan pada **malam hari/tengah malam**, untuk menghindari gangguan terhadap server dan proses pendataan lapangan
 
 ---
 
