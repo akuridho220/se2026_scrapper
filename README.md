@@ -73,6 +73,7 @@ py se_scrapper.py
     * **cookies**
     * **headers**
 12. Tempelkan ke dalam file `se_scrapper.py`
+**NOTE**: Jika baris terkahir header terdapat comment (#), hapus tanda pagar tersebut!
 
 ---
 
