@@ -42,6 +42,12 @@ Jalankan perintah berikut di terminal:
 pip install -r requirements.txt
 ```
 
+### 4. Jalankan Code
+Jalankan perintah berikut di terminal:
+``` 
+py se_scrapper.py
+```
+
 ---
 
 ## 🔐 Panduan Mengambil Cookies & Headers

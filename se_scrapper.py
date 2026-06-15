@@ -18,7 +18,7 @@ if not os.path.exists(base_path):
 
 timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
 log_path = os.path.join(base_path, f"error_log_{timestamp}.txt")
-backup_file = os.path.join(base_path, f"SCRAPING_SE2026_{NAMA_KABUPATEN}_TANJUNG_{timestamp}.xlsx")
+backup_file = os.path.join(base_path, f"SCRAPING_SE2026_{NAMA_KABUPATEN}_{timestamp}.xlsx")
 
 logging.basicConfig(
     filename=log_path,
