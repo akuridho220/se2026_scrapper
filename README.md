@@ -74,6 +74,8 @@ py se_scrapper.py
     * **headers**
 12. Tempelkan ke dalam file `se_scrapper.py`
 
+**NOTE**: Jika baris terkahir **headers** terdapat comment (#), hapus tanda pagar tersebut!
+
 ---
 
 ## ⚠️ Catatan Penting
@@ -84,8 +86,7 @@ py se_scrapper.py
   * Jika lebih dari itu, data selebihnya **tidak akan terambil**
 * Gunakan script ini dengan bijak
 
-  * Disarankan menjalankan pada **malam hari**
-  * Untuk menghindari gangguan terhadap server dan proses pendataan lapangan
+  * Disarankan menjalankan pada **malam hari/tengah malam**, untuk menghindari gangguan terhadap server dan proses pendataan lapangan
 
 ---
 
