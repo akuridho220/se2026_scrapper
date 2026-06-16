@@ -10,7 +10,7 @@ Script ini digunakan untuk melakukan scraping data Sensus Ekonomi 2026 dari sist
 
 ### 1. Unduh Source Code
 
-Clone repository ini atau unduh file **`se_scrapper.py`**.
+Clone repository ini atau unduh file **`se_scrapper.py`** dan **`requirements.txt`**.
 
 ---
 
@@ -87,6 +87,7 @@ py se_scrapper.py
 * Gunakan script ini dengan bijak
 
   * Disarankan menjalankan pada **malam hari/tengah malam**, untuk menghindari gangguan terhadap server dan proses pendataan lapangan
+* Membuka file hasil scraping saat proses scraping masih berjalan dapat menginterupsi proses scraping dan menyebabkan proses berhenti
 
 ---
 
