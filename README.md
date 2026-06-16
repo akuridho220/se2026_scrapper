@@ -6,6 +6,21 @@ Script ini digunakan untuk melakukan scraping data Sensus Ekonomi 2026 dari sist
 
 ---
 
+## ⚙️ Requirements
+
+Pastikan Anda telah menginstall:
+
+* **Python 3.x**
+* **pip (Python package manager)**
+
+Cek versi Python:
+
+```bash
+python --version
+```
+
+---
+
 ## 🚀 Cara Penggunaan
 
 ### 1. Unduh Source Code
