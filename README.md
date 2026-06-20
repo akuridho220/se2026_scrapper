@@ -1,8 +1,8 @@
-# SCRAPER DATA SENSUS EKONOMI 2026
+# SCRAPER DATA REKAP PROGRES SENSUS EKONOMI 2026
 
 ## 📌 Deskripsi
 
-Script ini digunakan untuk melakukan scraping data Sensus Ekonomi 2026 dari sistem terkait hingga level SLS.
+Script ini digunakan untuk melakukan scraping data rekapitulasi progres Sensus Ekonomi 2026 dari sistem Fasih hingga level Sub SLS.
 
 ---
 
@@ -10,27 +10,20 @@ Script ini digunakan untuk melakukan scraping data Sensus Ekonomi 2026 dari sist
 
 ### 1. Unduh Source Code
 
-Clone repository ini atau unduh file **`se_scrapper.py`**.
+Clone repository ini atau unduh file **`recap_se_scrapper.py`**.
 
 ---
 
 ### 2. Konfigurasi Awal
 
-Buka file **`se_scrapper.py`**, lalu sesuaikan beberapa bagian berikut:
+Buka file **`recap_se_scrapper.py`**, lalu sesuaikan beberapa bagian berikut:
 
-* **KODE_PROVINSI** → isi dengan kode provinsi Anda
 * **NAMA_KABUPATEN** → isi dengan nama kabupaten Anda
 * **base_path** → tentukan folder penyimpanan hasil scraping
 * **headers** → isi dengan headers hasil dari browser
 * **cookies** → isi dengan cookies hasil dari browser
+* **json_data** isi dengan json_data hasil dari browser
 
-**Opsional:**
-
-* Anda dapat menambahkan filter untuk:
-
-  * Kecamatan
-  * Desa
-    sesuai kebutuhan
 
 ---
 
@@ -50,20 +43,20 @@ py se_scrapper.py
 
 ---
 
-## 🔐 Panduan Mengambil Cookies & Headers
+## 🔐 Panduan Mengambil Cookies, Headers & Json_data
 
 1. Buka aplikasi **Fasih-sm** dan login
 2. Pilih kegiatan **Sensus Ekonomi 2026**
-3. Masuk ke halaman **Data**
+3. Masuk ke halaman **Dasbor** lalu pilih **Rekap Petugas** dan pilih **Pencacah**
 4. Buka Developer Tools:
 
    * Klik kanan → *Inspect*, atau tekan **F12**
 5. Masuk ke tab **Network**
-6. Jika kosong, reload halaman
+6. Jika kosong, reload halaman atau reload pada rekap petugas
 7. Cari request dengan nama:
 
    ```
-   datatable-all-user-survey-periode
+   report-progress-by-responsibility
    ```
 8. Klik kanan pada request tersebut → pilih **Copy → Copy as cURL (bash)**
 9. Buka website: https://curlconverter.com
@@ -72,24 +65,14 @@ py se_scrapper.py
 
     * **cookies**
     * **headers**
-12. Tempelkan ke dalam file `se_scrapper.py`
+    * **json_data**
 
-**NOTE**: Jika baris terkahir **headers** terdapat comment (#), hapus tanda pagar tersebut!
-
----
-
-## ⚠️ Catatan Penting
-
-* Data yang diambil adalah **level SLS**
-* Maksimal data yang dapat diambil per SLS adalah **1000 baris**
-
-  * Jika lebih dari itu, data selebihnya **tidak akan terambil**
-* Gunakan script ini dengan bijak
-
-  * Disarankan menjalankan pada **malam hari/tengah malam**, untuk menghindari gangguan terhadap server dan proses pendataan lapangan
+12. Tempelkan ke dalam file `recap_se_scrapper.py`
+13. **PENTING** Jika baris terkahir **headers** terdapat comment (#), hapus tanda pagar tersebut! Selain itu hapus baris berisi informasi **page** dan **size** pada **json_data**
 
 ---
+
 
 ## 🙏 Penutup
 
-Gunakan tools ini secara bertanggung jawab dan hanya untuk keperluan yang sesuai.
+Gunakan tools ini secara bertanggung jawab dan hanya untuk keperluan yang monitoring.
