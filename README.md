@@ -10,7 +10,7 @@ Script ini digunakan untuk melakukan scraping data rekapitulasi progres Sensus E
 
 ### 1. Unduh Source Code
 
-Clone repository ini atau unduh file **`recap_se_scrapper.py`**.
+Clone repository ini atau unduh file **`recap_se_scrapper.py`** dan **`requirements.txt`**.
 
 ---
 
@@ -38,7 +38,7 @@ pip install -r requirements.txt
 ### 4. Jalankan Code
 Jalankan perintah berikut di terminal:
 ``` 
-py se_scrapper.py
+py recap_se_scrapper.py
 ```
 
 ---
@@ -47,7 +47,7 @@ py se_scrapper.py
 
 1. Buka aplikasi **Fasih-sm** dan login
 2. Pilih kegiatan **Sensus Ekonomi 2026**
-3. Masuk ke halaman **Dasbor** lalu pilih **Rekap Petugas** dan pilih **Pencacah**
+3. Masuk ke halaman **Dashboard** lalu pilih **Rekap Petugas** dan pilih **Pencacah**
 4. Buka Developer Tools:
 
    * Klik kanan → *Inspect*, atau tekan **F12**
@@ -61,7 +61,7 @@ py se_scrapper.py
 8. Klik kanan pada request tersebut → pilih **Copy → Copy as cURL (bash)**
 9. Buka website: https://curlconverter.com
 10. Paste hasil cURL
-11. Salin bagian:
+11. Salin isian:
 
     * **cookies**
     * **headers**
